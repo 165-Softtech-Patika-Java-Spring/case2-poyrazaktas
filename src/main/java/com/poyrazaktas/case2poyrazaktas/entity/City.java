@@ -3,6 +3,8 @@ package com.poyrazaktas.case2poyrazaktas.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CITY")
@@ -19,4 +21,13 @@ public class City {
     @Column(nullable = false)
     private int licensePlate;
 
+    @OneToMany(mappedBy = "city")
+    private List<District> districtList = new ArrayList<District>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="fk_country")
+    private Country country;
+
+    @OneToOne(mappedBy = "city")
+    private Address address;
 }

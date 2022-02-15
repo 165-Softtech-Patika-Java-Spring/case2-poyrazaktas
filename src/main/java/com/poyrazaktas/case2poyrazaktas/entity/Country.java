@@ -3,6 +3,8 @@ package com.poyrazaktas.case2poyrazaktas.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="COUNTRY")
@@ -18,4 +20,10 @@ public class Country {
 
     @Column(nullable = false)
     private int countryCode;
+
+    @OneToMany(mappedBy = "country")
+    private List<City> cityList = new ArrayList<>();
+
+    @OneToOne(mappedBy = "country")
+    private Address address;
 }

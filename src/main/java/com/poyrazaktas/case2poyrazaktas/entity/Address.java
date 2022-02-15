@@ -16,10 +16,26 @@ public class Address {
     @Column(nullable = false)
     private String name;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="country_id",referencedColumnName = "id")
+    private Country country;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="city_id",referencedColumnName = "id")
+    private City city;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="district_id",referencedColumnName = "id")
+    private District district;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="neighborhood_id",referencedColumnName = "id")
+    private Neighborhood neighborhood;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="street_id",referencedColumnName = "id")
+    private Street street;
+
     private int gateNumber;
-
     private int apartmentNumber;
-
-
-
 }

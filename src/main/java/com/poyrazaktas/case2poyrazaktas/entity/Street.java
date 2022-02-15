@@ -15,4 +15,11 @@ public class Street {
 
     @Column(nullable = false)
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="fk_neighborhood")
+    private Neighborhood  neighborhood;
+
+    @OneToOne(mappedBy = "street")
+    private Address address;
 }
