@@ -25,6 +25,6 @@ public class District {
     @JoinColumn(name = "fk_city")
     private City city;
 
-    @OneToOne(mappedBy = "district")
-    private Address address;
+//    @OneToOne(mappedBy = "district")
+//    private Address address;
 }

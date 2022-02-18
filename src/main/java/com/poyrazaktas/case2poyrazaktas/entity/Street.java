@@ -20,6 +20,6 @@ public class Street {
     @JoinColumn(name="fk_neighborhood")
     private Neighborhood  neighborhood;
 
-    @OneToOne(mappedBy = "street")
-    private Address address;
+//    @OneToOne(mappedBy = "street")
+//    private Address address;
 }

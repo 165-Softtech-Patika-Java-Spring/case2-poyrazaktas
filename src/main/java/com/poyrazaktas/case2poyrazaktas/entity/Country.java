@@ -23,9 +23,9 @@ public class Country {
     @Column(nullable = false)
     private int countryCode;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country",cascade = CascadeType.ALL)
     private List<City> cityList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "country")
-    private Address address;
+//    @OneToOne(mappedBy = "country")
+//    private Address address;
 }

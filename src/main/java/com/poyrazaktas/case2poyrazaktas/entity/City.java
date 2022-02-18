@@ -24,10 +24,10 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<District> districtList = new ArrayList<District>();
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="country_id",nullable = false)
     private Country country;
 
-    @OneToOne(mappedBy = "city")
-    private Address address;
+//    @OneToOne(mappedBy = "city")
+//    private Address address;
 }

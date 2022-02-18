@@ -43,6 +43,8 @@ public class CityService {
     public CityDto update(CityUpdateReqDto cityUpdateReqDto){
         City city = CityMapper.INSTANCE.convertToCity(cityUpdateReqDto);
         checkIfCityExists(city);
+        Country country = countryEntityService.get(cityUpdateReqDto.getCountryId());
+        city.setCountry(country);
         city = cityEntityService.save(city);
         CityDto cityDto = CityMapper.INSTANCE.convertToCityDto(city);
         return cityDto;
