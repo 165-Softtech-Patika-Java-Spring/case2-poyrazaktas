@@ -1,5 +1,6 @@
 package com.poyrazaktas.case2poyrazaktas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "COUNTRY")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cityList"})
 public class Country {
     @Id
     @GeneratedValue(generator = "Country")
@@ -21,7 +23,7 @@ public class Country {
     @Column(nullable = false)
     private int countryCode;
 
-    @OneToMany(fetch = FetchType.LAZY,targetEntity = City.class,mappedBy = "country",orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     private List<City> cityList = new ArrayList<>();
 
     @OneToOne(mappedBy = "country")

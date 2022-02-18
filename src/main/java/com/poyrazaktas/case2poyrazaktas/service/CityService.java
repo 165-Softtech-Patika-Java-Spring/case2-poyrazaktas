@@ -7,6 +7,7 @@ import com.poyrazaktas.case2poyrazaktas.dto.city.CityUpdateReqDto;
 import com.poyrazaktas.case2poyrazaktas.entity.City;
 import com.poyrazaktas.case2poyrazaktas.entity.Country;
 import com.poyrazaktas.case2poyrazaktas.service.entityservice.CityEntityService;
+import com.poyrazaktas.case2poyrazaktas.service.entityservice.CountryEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CityService {
     private final CityEntityService cityEntityService;
+    private final CountryEntityService countryEntityService;
 
     public List<CityDto> findAll(){
         List<City> cityList = cityEntityService.findAll();
@@ -25,6 +27,8 @@ public class CityService {
 
     public CityDto save(CityPostReqDto cityPostReqDto){
         City city = CityMapper.INSTANCE.convertToCity(cityPostReqDto);
+        Country country = countryEntityService.get(cityPostReqDto.getCountryId());
+        city.setCountry(country);
         city = cityEntityService.save(city);
         CityDto cityDto = CityMapper.INSTANCE.convertToCityDto(city);
         return cityDto;

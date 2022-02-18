@@ -1,5 +1,6 @@
 package com.poyrazaktas.case2poyrazaktas.dto.country;
 
+import com.poyrazaktas.case2poyrazaktas.entity.Address;
 import com.poyrazaktas.case2poyrazaktas.entity.City;
 import lombok.Data;
 
