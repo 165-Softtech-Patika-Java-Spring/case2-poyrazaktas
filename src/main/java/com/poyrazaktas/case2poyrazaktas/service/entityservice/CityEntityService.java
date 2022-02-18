@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
-public class CityEntityService implements IEntityService<City>{
+public class CityEntityService implements IEntityServiceManager<City> {
 
     private final CityDao cityDao;
 

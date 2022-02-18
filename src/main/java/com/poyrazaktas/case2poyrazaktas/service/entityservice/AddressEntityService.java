@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AddressEntityService implements IEntityService<Address> {
+public class AddressEntityService implements IEntityServiceManager<Address> {
 
     private final AddressDao addressDao;
 

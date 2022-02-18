@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StreetEntityService implements IEntityService<Street> {
+public class StreetEntityService implements IEntityServiceManager<Street> {
 
     private final StreetDao streetDao;
 

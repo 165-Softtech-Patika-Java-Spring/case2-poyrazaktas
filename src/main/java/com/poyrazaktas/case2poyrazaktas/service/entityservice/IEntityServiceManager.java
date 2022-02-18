@@ -3,7 +3,7 @@ package com.poyrazaktas.case2poyrazaktas.service.entityservice;
 import java.util.List;
 import java.util.Optional;
 
-public interface IEntityService<T> {
+public interface IEntityServiceManager<T> {
     List<T> findAll();
 
     Optional<T> findById(Long id);

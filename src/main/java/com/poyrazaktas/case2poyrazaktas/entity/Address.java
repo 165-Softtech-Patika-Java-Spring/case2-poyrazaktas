@@ -13,9 +13,6 @@ public class Address {
     @SequenceGenerator(name="Address", sequenceName = "ADDRESS_SEQ")
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="country_id",referencedColumnName = "id")
     private Country country;

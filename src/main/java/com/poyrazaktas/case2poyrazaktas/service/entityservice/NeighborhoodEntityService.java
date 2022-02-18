@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class NeighborhoodEntityService implements IEntityService<Neighborhood> {
+public class NeighborhoodEntityService implements IEntityServiceManager<Neighborhood> {
 
     private final NeighborhoodDao neighborhoodDao;
 
@@ -35,9 +35,9 @@ public class NeighborhoodEntityService implements IEntityService<Neighborhood> {
     public Neighborhood get(Long id) {
 
         Neighborhood neighborhood;
-        if (existsById(id)){
+        if (existsById(id)) {
             neighborhood = findById(id).get();
-        }else{
+        } else {
             throw new ItemNotFoundException(NeighborhoodMessages.NOT_FOUND.getMessage());
         }
         return neighborhood;
@@ -52,6 +52,5 @@ public class NeighborhoodEntityService implements IEntityService<Neighborhood> {
     public void delete(Neighborhood entity) {
         neighborhoodDao.delete(entity);
     }
-
 
 }

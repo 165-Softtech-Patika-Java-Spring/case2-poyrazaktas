@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="COUNTRY")
+@Table(name = "COUNTRY")
 @Data
 public class Country {
     @Id
     @GeneratedValue(generator = "Country")
-    @SequenceGenerator(name="Country", sequenceName = "COUNTRY_SEQ")
+    @SequenceGenerator(name = "Country", sequenceName = "COUNTRY_SEQ")
     private Long id;
 
     @Column(nullable = false)
@@ -21,7 +21,7 @@ public class Country {
     @Column(nullable = false)
     private int countryCode;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = City.class,mappedBy = "country",orphanRemoval = true)
     private List<City> cityList = new ArrayList<>();
 
     @OneToOne(mappedBy = "country")

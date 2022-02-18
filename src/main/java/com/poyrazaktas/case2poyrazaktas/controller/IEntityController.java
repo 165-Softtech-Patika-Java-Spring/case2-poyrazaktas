@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface IEntityController<T> {
     public ResponseEntity findAll();
-    public ResponseEntity findById(Long id);
-    public ResponseEntity delete();
+    public ResponseEntity get(Long id);
+    public ResponseEntity delete(Long id);
     public ResponseEntity save(T entity);
     public ResponseEntity update(T entity);
 }

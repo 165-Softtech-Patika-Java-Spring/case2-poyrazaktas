@@ -24,8 +24,11 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<District> districtList = new ArrayList<District>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="fk_country")
+    @Column(name = "country_id", insertable = false, updatable = false)
+    private int countyId;
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
+    @JoinColumn(name="country_id",nullable = false)
     private Country country;
 
     @OneToOne(mappedBy = "city")

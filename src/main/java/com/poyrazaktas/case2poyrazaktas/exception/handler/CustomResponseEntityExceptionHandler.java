@@ -1,5 +1,6 @@
 package com.poyrazaktas.case2poyrazaktas.exception.handler;
 
+import com.poyrazaktas.case2poyrazaktas.exception.customexceptions.ItemNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,6 +23,17 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         CustomExceptionResponse exceptionResponse = new CustomExceptionResponse(date,message,description);
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleItemNotFoundExceptions(ItemNotFoundException ex, WebRequest webRequest){
+        Date date = new Date();
+        String message = ex.getMessage();
+        String description = webRequest.getDescription(false);
+
+        CustomExceptionResponse exceptionResponse = new CustomExceptionResponse(date,message,description);
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
 }

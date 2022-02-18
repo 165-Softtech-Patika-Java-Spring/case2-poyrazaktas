@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class DistrictEntityService implements IEntityService<District>{
+public class DistrictEntityService implements IEntityServiceManager<District> {
 
     private final DistrictDao districtDao;
 
