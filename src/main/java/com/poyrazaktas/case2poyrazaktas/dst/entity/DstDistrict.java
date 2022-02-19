@@ -1,5 +1,6 @@
 package com.poyrazaktas.case2poyrazaktas.dst.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.poyrazaktas.case2poyrazaktas.cty.entity.CtyCity;
 import com.poyrazaktas.case2poyrazaktas.ngh.entity.NghNeighborhood;
 import lombok.Data;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="DISTRICT")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","neighborhoodList"})
 public class DstDistrict {
     @Id
     @GeneratedValue(generator = "District")
@@ -20,7 +22,7 @@ public class DstDistrict {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "district")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "district",cascade = CascadeType.ALL)
     private List<NghNeighborhood> neighborhoodList = new ArrayList<NghNeighborhood>();
 
     @ManyToOne(fetch = FetchType.LAZY)
