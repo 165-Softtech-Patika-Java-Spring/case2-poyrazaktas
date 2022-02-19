@@ -57,6 +57,6 @@ public class CtyCityService {
 
     private void checkIfCityExists(CtyCity city){
         // if country exists it will not throw an error
-        cityEntityService.existsById(city.getId());
+        cityEntityService.get(city.getId());
     }
 }

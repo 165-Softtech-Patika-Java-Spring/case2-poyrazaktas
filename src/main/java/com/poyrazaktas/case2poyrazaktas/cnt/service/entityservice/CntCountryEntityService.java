@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,22 +19,8 @@ public class CntCountryEntityService {
         return countryDao.findAll();
     }
 
-    public Optional<CntCountry> findById(Long id) {
-        return countryDao.findById(id);
-    }
-
-    public boolean existsById(Long id) {
-        return countryDao.existsById(id);
-    }
-
     public CntCountry get(Long id) {
-        CntCountry country;
-        if (existsById(id)) {
-            country = findById(id).get();
-        } else {
-            throw new ItemNotFoundException(CntCountryMessages.NOT_FOUND.getMessage());
-        }
-        return country;
+        return countryDao.findById(id).orElseThrow(() -> new ItemNotFoundException(CntCountryMessages.NOT_FOUND.getMessage()));
     }
 
     public CntCountry save(CntCountry entity) {

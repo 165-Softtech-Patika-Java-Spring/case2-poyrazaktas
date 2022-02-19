@@ -2,8 +2,8 @@ package com.poyrazaktas.case2poyrazaktas.dst.service.entityservice;
 
 import com.poyrazaktas.case2poyrazaktas.dst.dao.DstDistrictDao;
 import com.poyrazaktas.case2poyrazaktas.dst.entity.DstDistrict;
-import com.poyrazaktas.case2poyrazaktas.exception.customexceptions.ItemNotFoundException;
 import com.poyrazaktas.case2poyrazaktas.dst.util.enums.DstDistrictMessages;
+import com.poyrazaktas.case2poyrazaktas.exception.customexceptions.ItemNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +20,8 @@ public class DstDistrictEntityService {
         return districtDao.findAll();
     }
 
-    public Optional<DstDistrict> findById(Long id) {
-        return districtDao.findById(id);
-    }
-
-    public boolean existsById(Long id) {
-        return districtDao.existsById(id);
-    }
-
     public DstDistrict get(Long id) {
-        DstDistrict district;
-        if (existsById(id)){
-            district = findById(id).get();
-        }else{
-            throw new ItemNotFoundException(DstDistrictMessages.NOT_FOUND.getMessage());
-        }
-        return district;
+        return districtDao.findById(id).orElseThrow(() -> new ItemNotFoundException(DstDistrictMessages.NOT_FOUND.getMessage()));
     }
 
     public DstDistrict save(DstDistrict entity) {
