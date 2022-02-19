@@ -18,23 +18,23 @@ public class AdrAddress {
     @SequenceGenerator(name="Address", sequenceName = "ADDRESS_SEQ")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="country_id",referencedColumnName = "id")
     private CntCountry country;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="city_id",referencedColumnName = "id")
     private CtyCity city;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="district_id",referencedColumnName = "id")
     private DstDistrict district;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="neighborhood_id",referencedColumnName = "id")
     private NghNeighborhood neighborhood;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="street_id",referencedColumnName = "id")
     private SrtStreet street;
 
