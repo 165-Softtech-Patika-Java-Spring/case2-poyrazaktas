@@ -20,22 +20,8 @@ public class SrtStreetEntityService {
         return streetDao.findAll();
     }
 
-    public Optional<SrtStreet> findById(Long id) {
-        return streetDao.findById(id);
-    }
-
-    public boolean existsById(Long id) {
-        return streetDao.existsById(id);
-    }
-
     public SrtStreet get(Long id) {
-        SrtStreet street;
-        if (existsById(id)){
-            street = findById(id).get();
-        }else{
-            throw new ItemNotFoundException(SrtStreetMessages.NOT_FOUND.getMessage());
-        }
-        return street;
+        return streetDao.findById(id).orElseThrow(()->new ItemNotFoundException(SrtStreetMessages.NOT_FOUND.getMessage()));
     }
 
     public SrtStreet save(SrtStreet entity) {
