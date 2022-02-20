@@ -15,28 +15,28 @@ import org.springframework.web.bind.annotation.*;
 public class AdrAddressController {
     private final AdrAddressService addressService;
 
-    @GetMapping
+    @GetMapping("/findAll")
     public ResponseEntity findAll(){
         return ResponseEntity.ok(addressService.findAll());
     }
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable Long id){
         AdrAddressDto addressDto = addressService.get(id);
         return ResponseEntity.ok(addressDto);
     }
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity save(@RequestBody AdrAddressPostReqDto addressPostReqDto){
         AdrAddressDto addressDto = addressService.save(addressPostReqDto);
         return ResponseEntity.ok(addressDto);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity update(@RequestBody AdrAddressUpdateReqDto addressUpdateReqDto){
         AdrAddressDto addressDto = addressService.update(addressUpdateReqDto);
         return ResponseEntity.ok(addressDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         addressService.delete(id);
         return new ResponseEntity(HttpStatus.OK);

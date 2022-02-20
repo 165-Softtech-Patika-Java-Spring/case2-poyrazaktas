@@ -15,30 +15,30 @@ import org.springframework.web.bind.annotation.*;
 public class SrtStreetController {
     private final SrtStreetService streetService;
 
-    @GetMapping
+    @GetMapping("/findAll")
     public ResponseEntity findAll(){
         return ResponseEntity.ok(streetService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable Long id){
         SrtStreetDto srtStreetDto = streetService.get(id);
         return ResponseEntity.ok(srtStreetDto);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity save(@RequestBody SrtStreetPostReqDto streetPostReqDto){
         SrtStreetDto srtStreetDto = streetService.save(streetPostReqDto);
         return ResponseEntity.ok(srtStreetDto);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity update(@RequestBody SrtStreetUpdateDto streetUpdateDto){
         SrtStreetDto srtStreetDto = streetService.update(streetUpdateDto);
         return ResponseEntity.ok(srtStreetDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         streetService.delete(id);
         return new ResponseEntity(HttpStatus.OK);

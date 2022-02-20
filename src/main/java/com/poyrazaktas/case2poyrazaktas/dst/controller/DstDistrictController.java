@@ -15,30 +15,30 @@ import org.springframework.web.bind.annotation.*;
 public class DstDistrictController {
     private final DstDistrictService districtService;
 
-    @GetMapping
+    @GetMapping("/findAll")
     public ResponseEntity findAll(){
         return ResponseEntity.ok(districtService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable Long id){
         DstDistrictDto districtDto = districtService.get(id);
         return ResponseEntity.ok(districtDto);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity save(@RequestBody DstDistrictPostReqDto districtPostReqDto){
         DstDistrictDto districtDto = districtService.save(districtPostReqDto);
         return ResponseEntity.ok(districtDto);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity update(@RequestBody DstDistrictUpdateReqDto districtUpdateReqDto){
         DstDistrictDto districtDto = districtService.update(districtUpdateReqDto);
         return ResponseEntity.ok(districtDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         districtService.delete(id);
         return new ResponseEntity(HttpStatus.OK);

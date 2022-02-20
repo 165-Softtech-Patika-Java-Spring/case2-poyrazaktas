@@ -15,31 +15,31 @@ import org.springframework.web.bind.annotation.*;
 public class NghNeighborhoodController {
     private final NghNeighborhoodService neighborhoodService;
 
-    @GetMapping
-    public ResponseEntity findAll(){
+    @GetMapping("/findAll")
+    public ResponseEntity findAll() {
         return ResponseEntity.ok(neighborhoodService.findAll());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity get(@PathVariable Long id){
+    @GetMapping("/get/{id}")
+    public ResponseEntity get(@PathVariable Long id) {
         NghNeighborhoodDto neighborhoodDto = neighborhoodService.get(id);
         return ResponseEntity.ok(neighborhoodDto);
     }
 
-    @PostMapping
-    public ResponseEntity save(@RequestBody NghNeighborhoodPostReqDto neighborhoodPostReqDto){
+    @PostMapping("/save")
+    public ResponseEntity save(@RequestBody NghNeighborhoodPostReqDto neighborhoodPostReqDto) {
         NghNeighborhoodDto neighborhoodDto = neighborhoodService.save(neighborhoodPostReqDto);
         return ResponseEntity.ok(neighborhoodDto);
     }
 
-    @PutMapping
-    public ResponseEntity update(@RequestBody NghNeighborhoodUpdateReqDto neighborhoodUpdateReqDto){
+    @PutMapping("/update")
+    public ResponseEntity update(@RequestBody NghNeighborhoodUpdateReqDto neighborhoodUpdateReqDto) {
         NghNeighborhoodDto neighborhoodDto = neighborhoodService.update(neighborhoodUpdateReqDto);
         return ResponseEntity.ok(neighborhoodDto);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
         neighborhoodService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
